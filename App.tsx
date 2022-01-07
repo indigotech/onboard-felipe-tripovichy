@@ -8,6 +8,7 @@
  * @format
  */
 
+import { tSTypeLiteral } from '@babel/types';
 import React from 'react';
 import {
   SafeAreaView,
@@ -17,6 +18,8 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
+  TextInput
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -57,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={backgroundStyle, styles.sectionContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -68,7 +71,16 @@ const App = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Section title={''}>Hello World!</Section>
+          <Text style={styles.sectionTitle}>Bem vindo(a) à Taqtile!</Text>
+          <Text style={{paddingTop: 20}}>Email</Text>
+          <TextInput placeholder=''
+            style={{ borderWidth: 2, borderColor: 'black', margin: 20}}
+          />
+          <Text style={{}}>Senha</Text>
+          <TextInput placeholder=''
+            style={{ borderWidth: 2, borderColor: 'black', margin: 20}}
+          />
+          <Button title='Entrar'/>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -83,6 +95,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    color: 'black'
   },
   sectionDescription: {
     marginTop: 8,
