@@ -16,4 +16,4 @@ This is my firt Taqtile's project
 ### Steps to run and debug
 
 - Open Android Studio
-- Run on terminar: npx react-native run-android
+- Run on terminal: npx react-native run-android
