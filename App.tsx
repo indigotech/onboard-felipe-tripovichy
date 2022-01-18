@@ -21,7 +21,6 @@ import {
   Button,
   TextInput
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Section: React.FC<{
@@ -50,7 +49,33 @@ const Section: React.FC<{
       </Text>
     </View>
   );
-};
+  };
+
+const InputWithLabel = (props : any) => (
+
+  <View>
+    <Text style={styles.inputText}>{props.title}</Text>
+    <TextInput
+      style={styles.input}
+      placeholder={props.placeholder}
+      secureTextEntry={props.secureTextEntry}
+    />
+  </View>
+
+);
+
+const LoginScreen = () => (
+  
+  <View>
+    <Text style={styles.sectionTitle}>Bem vindo(a) à Taqtile!</Text>
+    <InputWithLabel title='Email' placeholder='Escreva aqui o seu email' />
+    <InputWithLabel title='Senha' placeholder='Escreva aqui sua senha' secureTextEntry/>
+    <View style={{marginTop: 20}}>
+      <Button title='Entrar'/>
+    </View>
+  </View>
+
+);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -60,27 +85,11 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle, styles.sectionContainer}>
+    <SafeAreaView style={styles.sectionContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={styles.sectionTitle}>Bem vindo(a) à Taqtile!</Text>
-          <Text style={{paddingTop: 20}}>Email</Text>
-          <TextInput placeholder=''
-            style={{ borderWidth: 2, borderColor: 'black', margin: 20}}
-          />
-          <Text style={{}}>Senha</Text>
-          <TextInput placeholder=''
-            style={{ borderWidth: 2, borderColor: 'black', margin: 20}}
-          />
-          <Button title='Entrar'/>
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
+        <View style={{backgroundColor: isDarkMode ? Colors.black : Colors.white,}}>
+          <LoginScreen/>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -105,6 +114,15 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  input: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    marginBottom: 16,
+  },
+  inputText: {
+    paddingBottom: 5,
+    paddingTop: 16,
+  }
 });
 
 export default App;
